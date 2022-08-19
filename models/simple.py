@@ -2,8 +2,7 @@ import tensorflow as tf
 
 class Model(tf.keras.Model):
     def __init__(self):
-        pass
+        super(Model, self).__init__()
 
-    def predict(self, x):
-        self.y = tf.Variable(tf.ones(x.shape), trainable=False)
-        return tf.transpose(x) + self.y
+    def call(self, x, y):
+        return tf.transpose(x) + y
