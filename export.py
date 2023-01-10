@@ -40,7 +40,8 @@ class Exporter:
         self.module = tfc.compile_module(modelType(),
                                     exported_names = ['predict'],
                                     import_only = True,
-                                    output_mlir_debuginfo = False)
+                                    output_mlir_debuginfo = False,
+                                    import_extra_args=['--output-format=mlir-ir'])
         with open('tmp.mlir', 'wt') as output_file:
             output_file.write(self.module.decode("utf-8"))
     def translate_to_linalg(self):
